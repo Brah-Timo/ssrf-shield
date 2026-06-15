@@ -1,0 +1,132 @@
+{
+  "name": "ssrf-shield",
+  "version": "1.0.0",
+  "description": "Block SSRF attacks in one line. Production-ready middleware for Express/Fastify/Hono/Koa. Covers IPv4, IPv6, DNS rebinding, cloud metadata, octal/hex IPs, gopher, and 200+ bypass techniques.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./middleware": {
+      "import": "./dist/middleware.mjs",
+      "require": "./dist/middleware.js",
+      "types": "./dist/middleware.d.ts"
+    },
+    "./guard": {
+      "import": "./dist/guard.mjs",
+      "require": "./dist/guard.js",
+      "types": "./dist/guard.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
+    "build:watch": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "test": "jest --coverage",
+    "test:unit": "jest tests/unit --coverage",
+    "test:integration": "jest tests/integration --coverage",
+    "test:bypass": "jest tests/integration/bypass-attempts.test.ts --verbose",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --ext .ts --fix",
+    "lint:check": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run lint:check && npm run build && npm test",
+    "release": "npm run prepublishOnly && npm publish --access public",
+    "clean": "rimraf dist coverage",
+    "size": "size-limit",
+    "docs:build": "typedoc src/index.ts --out docs/api",
+    "security:audit": "npm audit --audit-level=moderate",
+    "benchmark": "ts-node tests/benchmarks/performance.ts"
+  },
+  "keywords": [
+    "ssrf",
+    "security",
+    "middleware",
+    "express",
+    "fastify",
+    "hono",
+    "koa",
+    "server-side-request-forgery",
+    "protection",
+    "firewall",
+    "owasp",
+    "dns-rebinding",
+    "ip-validation",
+    "typescript",
+    "node",
+    "web-security",
+    "pentest",
+    "cloud-security",
+    "aws-metadata",
+    "ssrf-protection"
+  ],
+  "author": {
+    "name": "ssrf-shield contributors",
+    "url": "https://github.com/Brah-Timo/ssrf-shield"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Brah-Timo/ssrf-shield.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Brah-Timo/ssrf-shield/issues"
+  },
+  "homepage": "https://ssrf-shield.io",
+  "peerDependencies": {
+    "express": ">=4.0.0",
+    "fastify": ">=4.0.0",
+    "koa": ">=2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "express": {
+      "optional": true
+    },
+    "fastify": {
+      "optional": true
+    },
+    "koa": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "ipaddr.js": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-security": "^3.0.0",
+    "express": "^4.19.0",
+    "jest": "^29.7.0",
+    "rimraf": "^5.0.0",
+    "ts-jest": "^29.1.4",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.5.1",
+    "typedoc": "^0.25.0",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "20 KB"
+    }
+  ]
+}
+
+

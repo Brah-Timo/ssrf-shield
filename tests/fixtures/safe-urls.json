@@ -1,0 +1,19 @@
+[
+  "https://api.github.com/users/octocat",
+  "https://httpbin.org/get",
+  "https://jsonplaceholder.typicode.com/posts/1",
+  "https://api.stripe.com/v1/charges",
+  "https://api.sendgrid.com/v3/mail/send",
+  "https://api.openai.com/v1/models",
+  "https://registry.npmjs.org/express",
+  "https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js",
+  "https://fonts.googleapis.com/css2?family=Inter",
+  "https://www.google.com/",
+  "http://example.com/",
+  "http://example.org/path?query=value&other=123",
+  "https://subdomain.example.com:8443/api/v1/resource",
+  "https://my-api.vercel.app/api/data",
+  "https://my-project.netlify.app/",
+  "https://my-worker.my-account.workers.dev/api"
+]
+
